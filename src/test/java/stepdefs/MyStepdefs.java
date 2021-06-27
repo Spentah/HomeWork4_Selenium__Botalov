@@ -6,12 +6,19 @@ import io.cucumber.java.ParameterType;
 import io.cucumber.java.ru.И;
 import io.cucumber.java.ru.Пусть;
 import io.cucumber.java.ru.Тогда;
+import io.qameta.allure.Allure;
+import io.qameta.allure.Step;
 import net.bytebuddy.TypeCache;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import pages.MainPage;
 import pages.PrinterPage;
+import stepdefs.Category;
+import stepdefs.SortBy;
 
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,54 +28,69 @@ public class MyStepdefs{
     public MainPage main = PageFactory.initElements(driver, MainPage.class);
     public PrinterPage printer = PageFactory.initElements(driver, PrinterPage.class);
 
+    public void screen() {
+        Allure.addAttachment("Скриншот", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+
+    }
+    @Step("Открываем авито")
     @Пусть("открыт ресурс авито")
     public void открытРесурсАвито() {
         main.goTo();
+        screen();
     }
-
+    @Step("Выбираем категорию оргтехника")
     @И("в выпадающем списке категорий выбрана {category}")
     public void вВыпадающемСпискеКатегорийВыбранаОргтехника(Category category) {
         main.selectCategory(category);
+        screen();
     }
-
+    @Step("В после поиска вводим {text}")
     @И("в поле поиска введено значение {string}")
     public void вПолеПоискаВведеноЗначение(String text) {
         main.sendText(text);
+        screen();
     }
-
+    @Step("Кликаем по списку регионов")
     @Тогда("кликнуть по выпадающему списку регионов")
     public void кликнутьПоВыпадающемуСпискуРегионов() {
         main.cityField();
+        screen();
     }
-
+    @Step("Вводим в поле регион значение {city}")
     @Тогда("в поле регион введено значение {string}")
     public void вПолеРегионВведеноЗначение(String city) {
         main.chooseCity(city);
+        screen();
     }
-
+    @Step("Нажимаем кнопку показать объявления")
     @И("нажата кнопка показать объявления")
     public void нажатаКнопкаПоказатьОбъявления() {
         main.buttonClick();
+        screen();
     }
-
+    @Step("Открылась страница результаты по запросу {text}")
     @Тогда("открылась страница результаты по запросу {string}")
     public void открыласьСтраницаРезультатыПоЗапросуПринтер(String text) {
         printer.checkPageTitle(text);
+        screen();
     }
-
+    @Step("Активирован чекбокс только с фотографией")
     @И("активирован чекбокс только с фотографией")
     public void активированЧекбоксТолькоСФотографией() {
         printer.checkboxAndSearch();
+        screen();
     }
-
+    @Step("В выпадающем списке сортировка выбрано значение дороже")
     @И("в выпадающем списке сортировка выбрано значение {sort}")
     public void вВыпадающемСпискеСортировкаВыбраноЗначениеДороже(SortBy by) {
         printer.sortBy(by);
+        screen();
     }
-
+    @Step("В консоль выведено значение названия и цены {number} первых товаров")
     @И("в консоль выведено значение названия и цены {int} первых товаров")
     public void вКонсольВыведеноЗначениеНазванияИЦеныПервыхТоваров(int number) {
         printer.takeExpensivePrinter(number);
+        screen();
     }
 
     @ParameterType(".*")
