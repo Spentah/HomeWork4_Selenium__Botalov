@@ -46,10 +46,9 @@ public class PrinterPage {
         select.selectByValue(by.value + "");
     }
 
-    public PrinterPage takeExpensivePrinter(int number) {//a[@data-marker='item-title']
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='iva-item-content-3rB8a']")));
+    public PrinterPage takeExpensivePrinter(int number) {
+
         List<WebElement> printers = driver.findElements(By.xpath("//a[@data-marker='item-title']"));
-//        List<WebElement> prices = driver.findElements(By.xpath("//span[@class='price-price-3MojW']"));
         for (int i = 0; i < number; i++) {
             System.out.println(printers.get(i).getAttribute("outerText"));
         }
