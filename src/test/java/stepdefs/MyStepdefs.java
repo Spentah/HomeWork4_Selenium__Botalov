@@ -35,11 +35,6 @@ public class MyStepdefs{
     public MainPage main = PageFactory.initElements(driver, MainPage.class);
     public PrinterPage printer = PageFactory.initElements(driver, PrinterPage.class);
 
-    public void screen() {
-//        Allure.addAttachment("Скриншот", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
-
-    }
-
     @Attachment(value = "Скриншот", type = "image/png")
     public byte[] screenshot() {
 
@@ -66,7 +61,6 @@ public class MyStepdefs{
     @И("в выпадающем списке категорий выбрана {category}")
     public void вВыпадающемСпискеКатегорийВыбранаОргтехника(Category category) {
         main.selectCategory(category);
-        screen();
         screenshot();
     }
     @Step("В после поиска вводим {text}")
