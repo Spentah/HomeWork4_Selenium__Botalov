@@ -14,7 +14,6 @@ public enum Category {
     public String text;
     public int value;
 
-
     Category(String text, int value) {
         this.text = text;
         this.value = value;
