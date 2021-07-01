@@ -1,5 +1,6 @@
 package hooks;
 
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,7 +19,7 @@ public class Hooks {
 
     @Before
     public void start(){
-        System.setProperty("webdriver.chrome.driver","D:\\beat\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","src\\test\\java\\resources\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().window().maximize();
