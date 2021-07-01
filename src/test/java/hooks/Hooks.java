@@ -11,7 +11,7 @@ public class Hooks {
 
     @Before
     public void start(){
-        System.setProperty("webdriver.chrome.driver","D:\\beat\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","src\\test\\java\\resources\\chromedriver.exe");
         MyStepdefs.driver = new ChromeDriver();
         MyStepdefs.driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         MyStepdefs.driver.manage().window().maximize();
