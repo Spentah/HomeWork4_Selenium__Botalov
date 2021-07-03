@@ -1,8 +1,10 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -29,6 +31,10 @@ public class PrinterPage {
 
     public PrinterPage checkboxAndSearch() {
             if (!deliveryCheckbox.isSelected()) {
+                Actions action = new Actions(driver);
+                while (driver.findElements(By.xpath("//div[@class='applyButton-root-1KoTq']")).isEmpty()) {
+                    action.sendKeys(Keys.ARROW_DOWN).build().perform();
+                }
                 deliveryCheckbox.click();
             }
             searchButton.click();

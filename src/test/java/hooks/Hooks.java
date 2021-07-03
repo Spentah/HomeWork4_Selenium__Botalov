@@ -9,7 +9,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import pages.MainPage;
 import pages.PrinterPage;
-
 import java.util.concurrent.TimeUnit;
 
 public class Hooks {
